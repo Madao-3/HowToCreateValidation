@@ -7,8 +7,7 @@ class Vaildator
 
   def valid?(obj)
     value = obj.send(@attr_name)
-    result = (value.respond_to?(:empty?) ? !value.empty? : !!value)
-    result
+    (value.respond_to?(:empty?) ? !value.empty? : !!value)
   end
 end
 
@@ -17,7 +16,6 @@ class Base
     @@validators = []
 
     def validates(attr_name)
-      p (attr_name)
       @@validators << Vaildator.new(attr_name)
     end
   end
