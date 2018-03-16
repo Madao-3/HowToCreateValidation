@@ -20,6 +20,10 @@ class Base
     end
   end
 
+  def validators
+    @@validators
+  end
+
   def valid?
     self.class.validators.each do |validator|
       return false unless validator.valid?(self)
