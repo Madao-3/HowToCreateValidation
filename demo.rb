@@ -1,29 +1,44 @@
-class Base
-  class_attribute :validators
+class Vaildator
+  attr_accessor :attr_name
 
+  def initialize(attr_name)
+    @attr_name = attr_name
+  end
+
+  def valid?(obj)
+    value = obj.send(@attr_name)
+    result = (value.respond_to?(:empty?) ? !value.empty? : !!value)
+    result
+  end
+end
+
+class Base
   class << self
-    def validates(*attrs)
-      
-      
-      
-      validates ||= []
-      validates << 
+    @@validators = []
+
+    def validates(attr_name)
+      p (attr_name)
+      @@validators << Vaildator.new(attr_name)
     end
   end
 
-  def vaild?
-    
+  def valid?
+    self.class.validators.each do |validator|
+      return false unless validator.valid?(self)
+    end
+    true
   end
 end
 
 class Post < Base
-  attr_accessor :name
+  attr_accessor :title
 
-  validates :name, presence: true
+  validates :title
 
-  def initialize(name)
-    @name = name
+  def initialize(title)
+    @title = title
   end
 end
 
-Post
+blank_title_post = Post.new('')
+blank_title_post.valid?
