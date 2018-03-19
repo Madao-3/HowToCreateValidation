@@ -26,4 +26,15 @@ normal_post = Post.new('title', 'content')
 assert_equal normal_post.valid?, true, 'if all filled'
 
 
+short_title_post = Post.new('t', 'content')
+assert_equal short_title_post.valid?, false, 'if title is too short'
+
+
+long_title_post = Post.new('abcdefghijklmnopqrst', 'content')
+assert_equal short_title_post.valid?, false, 'if title is too long'
+
+
+normal_title_post = Post.new('abcde', 'content')
+assert_equal normal_title_post.valid?, true, 'this is a normal title'
+
 puts 'well done.'
