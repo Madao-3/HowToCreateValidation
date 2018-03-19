@@ -45,14 +45,3 @@ class Post < Base
     @content = content
   end
 end
-
-blank_title_post = Post.new('','')
-blank_title_post.valid?
-
-blank_content_post = Post.new('title', '')
-blank_content_post.valid?
-
-normal_post = Post.new('title', 'content')
-normal_post.valid?
-
-
