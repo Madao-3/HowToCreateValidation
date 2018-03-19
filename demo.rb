@@ -18,11 +18,12 @@ class Base
     def validates(attr_name)
       @@validators << Vaildator.new(attr_name)
     end
+    
+    def validators
+      @@validators
+    end
   end
 
-  def validators
-    @@validators
-  end
 
   def valid?
     self.class.validators.each do |validator|
