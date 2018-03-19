@@ -15,8 +15,10 @@ class Base
   class << self
     @@validators = []
 
-    def validates(attr_name)
-      @@validators << Vaildator.new(attr_name)
+    def validates(attr_names)
+      attr_names.each do |attr_name|
+        @@validators << Vaildator.new(attr_name)
+      end
     end
     
     def validators
@@ -36,7 +38,7 @@ end
 class Post < Base
   attr_accessor :title
 
-  validates :title
+  validates [:title, :content]
 
   def initialize(title)
     @title = title
