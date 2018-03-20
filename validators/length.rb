@@ -1,4 +1,4 @@
-class LengthValidator < Vaildator
+class LengthValidator < Validator
   CHECKS = {:is=>:==, :minimum=>:>=, :maximum=>:<=}
 
   def valid?(obj)

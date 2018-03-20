@@ -1,4 +1,4 @@
-class Vaildator
+class Validator
   attr_accessor :attr_name, :option
 
   def initialize(attr_name, option)
