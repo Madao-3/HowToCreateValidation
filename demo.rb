@@ -1,4 +1,4 @@
-class Vaildator
+class Validator
   attr_accessor :attr_name
 
   def initialize(attr_name)
@@ -17,7 +17,7 @@ class Base
 
     def validates(attr_names)
       attr_names.each do |attr_name|
-        @@validators << Vaildator.new(attr_name)
+        @@validators << Validator.new(attr_name)
       end
     end
     
